@@ -26,6 +26,7 @@
 /* ETH_CODE: add lwiperf, see comment in StartDefaultTask function */
 #include "lwip/apps/lwiperf.h"
 #include "lwip/netif.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -288,21 +289,9 @@ void StartDefaultTask(void *argument)
   /* init code for LWIP */
   MX_LWIP_Init();
   /* USER CODE BEGIN 5 */
-  /* ETH_CODE: Adding lwiperf to measure TCP/IP performance.
-   * iperf 2.0.6 (or older?) is required for the tests. Newer iperf2 versions
-   * might work without data check, but they send different headers.
-   * iperf3 is not compatible at all.
-   * Adding lwiperf.c file to the project is necessary.
-   * The default include path should already contain
-   * 'lwip/apps/lwiperf.h'
-   */
-  LOCK_TCPIP_CORE();
-  lwiperf_start_tcp_server_default(NULL, NULL);
+  //********************  IMPORTANT  ********************
+  //tcpip_init() este apelat deja in MX_LWIP_Init()
 
-  ip4_addr_t remote_addr;
-  IP4_ADDR(&remote_addr, 192, 168, 1, 1);
-  lwiperf_start_tcp_client_default(&remote_addr, NULL, NULL);
-  UNLOCK_TCPIP_CORE();
   /* Infinite loop */
   for(;;)
   {
