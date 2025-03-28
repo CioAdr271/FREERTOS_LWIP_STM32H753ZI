@@ -16,7 +16,29 @@ RM := rm -rf
 -include Middlewares/Third_Party/LwIP/src/core/ipv4/subdir.mk
 -include Middlewares/Third_Party/LwIP/src/core/subdir.mk
 -include Middlewares/Third_Party/LwIP/src/apps/mqtt/subdir.mk
+-include Middlewares/Third_Party/LwIP/src/apps/http/subdir.mk
 -include Middlewares/Third_Party/LwIP/src/api/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Middlewares/Third_Party/LwIP/system/OS/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Middlewares/Third_Party/LwIP/src/netif/ppp/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Middlewares/Third_Party/LwIP/src/netif/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Middlewares/Third_Party/LwIP/src/core/ipv6/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Middlewares/Third_Party/LwIP/src/core/ipv4/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Middlewares/Third_Party/LwIP/src/core/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Middlewares/Third_Party/LwIP/src/apps/mqtt/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Middlewares/Third_Party/LwIP/src/apps/http/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Middlewares/Third_Party/LwIP/src/api/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Middlewares/Third_Party/FreeRTOS/Source/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/LWIP/Target/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/LWIP/App/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Drivers/STM32H7xx_HAL_Driver/Src/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Drivers/BSP/STM32H7xx_Nucleo/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Drivers/BSP/Components/lan8742/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Core/Startup/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/Core/Src/subdir.mk
+-include Middlewares/Third_Party/LwIP/Debug/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/subdir.mk
@@ -76,8 +98,8 @@ all: main-build
 main-build: LwIP.elf secondary-outputs
 
 # Tool invocations
-LwIP.elf LwIP.map: $(OBJS) $(USER_OBJS) C:\Users\Adrian\STM32CubeIDE\workspace_1.16.1\LwIP\STM32H753ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "LwIP.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\Adrian\STM32CubeIDE\workspace_1.16.1\LwIP\STM32H753ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LwIP.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+LwIP.elf LwIP.map: $(OBJS) $(USER_OBJS) D:\Desktop\Netcon\LwIP\STM32H753ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "LwIP.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\Desktop\Netcon\LwIP\STM32H753ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LwIP.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
